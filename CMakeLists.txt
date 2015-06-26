@@ -624,6 +624,79 @@ set(SOURCES main.cpp
     src/VM/VMStack.h
     src/VM/VMStackValue.cpp
     src/VM/VMStackValue.h)
+    
+set(SOURCES_LIB src/Aaf/File.cpp
+    src/Aaf/File.h
+    src/Aaf/Glyph.cpp
+    src/Aaf/Glyph.h
+    src/Acm/Decoder.cpp
+    src/Acm/Decoder.h
+    src/Acm/File.cpp
+    src/Acm/File.h
+    src/Acm/General.h
+    src/Acm/Unpacker.cpp
+    src/Acm/Unpacker.h
+    src/Bio/File.cpp
+    src/Bio/File.h
+    src/Dat/Entry.cpp
+    src/Dat/Entry.h
+    src/Dat/File.cpp
+    src/Dat/File.h
+    src/Dat/Item.cpp
+    src/Dat/Item.h
+    src/Exception.cpp
+    src/Exception.h
+    src/Fon/File.cpp
+    src/Fon/File.h
+    src/Fon/Glyph.cpp
+    src/Fon/Glyph.h
+    src/Frm/Direction.cpp
+    src/Frm/Direction.h
+    src/Frm/File.cpp
+    src/Frm/File.h
+    src/Frm/Frame.cpp
+    src/Frm/Frame.h
+    src/Gam/File.cpp
+    src/Gam/File.h
+    src/Gcd/File.cpp
+    src/Gcd/File.h
+    src/Int/File.cpp
+    src/Int/File.h
+    src/Int/Procedure.cpp
+    src/Int/Procedure.h
+    src/libfalltergeist.h
+    src/Lip/File.cpp
+    src/Lip/File.h
+    src/Lst/File.cpp
+    src/Lst/File.h
+    src/Map/Elevation.cpp
+    src/Map/Elevation.h
+    src/Map/File.cpp
+    src/Map/File.h
+    src/Map/Object.cpp
+    src/Map/Object.h
+    src/Map/Script.cpp
+    src/Map/Script.h
+    src/Msg/File.cpp
+    src/Msg/File.h
+    src/Msg/Message.cpp
+    src/Msg/Message.h
+    src/Mve/Chunk.cpp
+    src/Mve/Chunk.h
+    src/Mve/File.cpp
+    src/Mve/File.h
+    src/Mve/Opcode.cpp
+    src/Mve/Opcode.h
+    src/Pal/Color.cpp
+    src/Pal/Color.h
+    src/Pal/File.cpp
+    src/Pal/File.h
+    src/Pro/File.cpp
+    src/Pro/File.h
+    src/Rix/File.cpp
+    src/Rix/File.h
+    src/Sve/File.cpp
+    src/Sve/File.h)    
 
 add_definitions (-std=c++11 -Wall)
 
