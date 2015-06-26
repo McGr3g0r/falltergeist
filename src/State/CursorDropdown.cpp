@@ -30,7 +30,7 @@
 #include "../State/CursorDropdown.h"
 #include "../State/Location.h"
 #include "../UI/HiddenMask.h"
-#include "Audio/AudioMixer.h"
+#include "../Audio/AudioMixer.h"
 #include "../Logger.h"
 
 // Third party includes

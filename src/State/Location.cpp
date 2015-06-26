@@ -57,7 +57,7 @@
 #include "../UI/SmallCounter.h"
 #include "../UI/TextArea.h"
 #include "../VM/VM.h"
-#include "Audio/AudioMixer.h"
+#include "../Audio/AudioMixer.h"
 
 // Third party includes
 
