@@ -33,6 +33,7 @@ include_directories(src)
 if(LIBFALLTERGEIST_EMBEDDED)
     set(LIBFALLTERGEIST_LIBRARY falltergeist)
     include_directories(${CMAKE_SOURCE_DIR}/lib/libfalltergeist/src)
+    include_directories(${CMAKE_SOURCE_DIR}/lib/libfalltergeist)
     set(LIBFALLTERGEIST_EMBEDDED ON CACHE BOOL "")
 else()
     find_package(LIBFALLTERGEIST REQUIRED)
@@ -674,7 +675,14 @@ SET(ANDROID_SOURCES "")
     SET(ANDROID_SOURCES "${ANDROID_SOURCES} \\\n${CMAKE_SOURCE_DIR}/${VAL}")
   ENDFOREACH(VAL ${${LISTNAME}})
 
+SET(ANDROID_SOURCES_LIB "")
+  FOREACH(VAL ${SOURCES_LIB})
+    SET(ANDROID_SOURCES_LIB "${ANDROID_SOURCES_LIB} \\\n${CMAKE_SOURCE_DIR}/lib/libfalltergeist/${VAL}")
+  ENDFOREACH(VAL ${${LISTNAME}})
+
+
 configure_file(package/android/jni/src/Android.mk.in package/android/jni/src/Android.mk)
+configure_file(package/android/jni/libfalltergeist/Android.mk.in package/android/jni/libfalltergeist/Android.mk)
 configure_file(package/android.sh.in package/android.sh)
   add_custom_command(
     OUTPUT Falltergeist.apk

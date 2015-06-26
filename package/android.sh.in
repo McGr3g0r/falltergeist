@@ -14,5 +14,6 @@ patch -p1 < ../../sdl.patch
 cd ../../
 ndk-build
 ant debug
-cp bin/Falltergeist-debug.apk ../../Falltergeist-debug-@falltergeist_VERSION@.apk
+#cp bin/Falltergeist-debug.apk ../../Falltergeist-debug-@falltergeist_VERSION@.apk
+cp  bin/SDLActivity-debug.apk ../../Falltergeist-debug-@falltergeist_VERSION@.apk
 rm -rf tmp
