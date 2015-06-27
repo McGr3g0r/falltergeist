@@ -316,22 +316,22 @@ libfalltergeist::Pro::File* ResourceManager::proFileType(unsigned int PID)
     std::string listFile;
     switch (typeId)
     {
-        case libfalltergeist::Pro::TYPE_ITEM:
+        case (char)FRM_TYPE::ITEM:
             listFile += "proto/items/items.lst";
             break;
-        case libfalltergeist::Pro::TYPE_CRITTER:
+        case (char)FRM_TYPE::CRITTER:
             listFile += "proto/critters/critters.lst";
             break;
-        case libfalltergeist::Pro::TYPE_SCENERY:
+        case (char)FRM_TYPE::SCENERY:
             listFile += "proto/scenery/scenery.lst";
             break;
-        case libfalltergeist::Pro::TYPE_WALL:
+        case (char)FRM_TYPE::WALL:
             listFile += "proto/walls/walls.lst";
             break;
-        case libfalltergeist::Pro::TYPE_TILE:
+        case (char)FRM_TYPE::TILE:
             listFile += "proto/tiles/tiles.lst";
             break;
-        case libfalltergeist::Pro::TYPE_MISC:
+        case (char)FRM_TYPE::MISC:
             listFile += "proto/misc/misc.lst";
             break;
         default:
@@ -353,17 +353,17 @@ libfalltergeist::Pro::File* ResourceManager::proFileType(unsigned int PID)
 
     switch (typeId)
     {
-        case libfalltergeist::Pro::TYPE_ITEM:
+        case (char)FRM_TYPE::ITEM:
             return proFileType("proto/items/" + protoName);
-        case libfalltergeist::Pro::TYPE_CRITTER:
+        case (char)FRM_TYPE::CRITTER:
             return proFileType("proto/critters/" + protoName);
-        case libfalltergeist::Pro::TYPE_SCENERY:
+        case (char)FRM_TYPE::SCENERY:
             return proFileType("proto/scenery/" + protoName);
-        case libfalltergeist::Pro::TYPE_WALL:
+        case (char)FRM_TYPE::WALL:
             return proFileType("proto/walls/" + protoName);
-        case libfalltergeist::Pro::TYPE_TILE:
+        case (char)FRM_TYPE::TILE:
             return proFileType("proto/tiles/" + protoName);
-        case libfalltergeist::Pro::TYPE_MISC:
+        case (char)FRM_TYPE::MISC:
             return proFileType("proto/misc/" + protoName);
     }
     return nullptr;
@@ -401,11 +401,11 @@ std::string ResourceManager::FIDtoFrmName(unsigned int FID)
 
     switch (type)
     {
-        case libfalltergeist::Frm::TYPE_ITEM:
+        case (char)FRM_TYPE::ITEM:
             prefix = "art/items/";
             lstFile = "items.lst";
             break;
-        case libfalltergeist::Frm::TYPE_CRITTER:
+        case (char)FRM_TYPE::CRITTER:
         {
             unsigned int weaponId = (FID & 0x0000F000) >> 12;
             unsigned int animId = (FID & 0x00FF0000) >> 16;
@@ -485,30 +485,30 @@ std::string ResourceManager::FIDtoFrmName(unsigned int FID)
 
             return "art/critters/" + frmBase;
         }
-        case libfalltergeist::Frm::TYPE_SCENERY:
+        case (char)FRM_TYPE::SCENERY:
             prefix = "art/scenery/";
             lstFile = "scenery.lst";
             break;
-        case libfalltergeist::Frm::TYPE_WALL:
+        case (char)FRM_TYPE::WALL:
             prefix = "art/walls/";
             lstFile = "walls.lst";
             break;
-        case libfalltergeist::Frm::TYPE_TILE:
+        case (char)FRM_TYPE::TILE:
             prefix = "art/tiles/";
             lstFile = "tiles.lst";
             break;
-        case libfalltergeist::Frm::TYPE_MISC:
+        case (char)FRM_TYPE::MISC:
             prefix = "art/misc/";
             lstFile = "misc.lst";
 
             // Map scroll blockers
             if (baseId == 1) return "art/misc/scrblk.frm";
             break;
-        case libfalltergeist::Frm::TYPE_INTERFACE:
+        case (char)FRM_TYPE::INTERFACE:
             prefix = "art/intrface/";
             lstFile = "intrface.lst";
             break;
-        case libfalltergeist::Frm::TYPE_INVENTORY:
+        case (char)FRM_TYPE::INVENTORY:
             prefix = "art/inven/";
             lstFile = "inven.lst";
             break;

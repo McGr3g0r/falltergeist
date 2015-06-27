@@ -158,17 +158,17 @@ unsigned int AnimatedPalette::getCounter(unsigned char type)
 {
     switch (type)
     {
-        case libfalltergeist::Frm::File::MASK_SLIME:
+        case (uint32_t)MASK::SLIME:
             return _slimeCounter;
-        case libfalltergeist::Frm::File::MASK_MONITOR:
+        case (uint32_t)MASK::MONITOR:
             return _monitorsCounter;
-        case libfalltergeist::Frm::File::MASK_SHORE:
+        case (uint32_t)MASK::SHORE:
             return _shoreCounter;
-        case libfalltergeist::Frm::File::MASK_FIRE_FAST:
+        case (uint32_t)MASK::FIRE_FAST:
             return _fireFastCounter;
-        case libfalltergeist::Frm::File::MASK_FIRE_SLOW:
+        case (uint32_t)MASK::FIRE_SLOW:
             return _fireSlowCounter;
-        case libfalltergeist::Frm::File::MASK_REDDOT:
+        case (uint32_t)MASK::REDDOT:
             return _blinkingRedCounter;
     }
     return 0;

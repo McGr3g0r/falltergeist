@@ -53,8 +53,8 @@ void GameDudeObject::loadFromGCDFile(libfalltergeist::Gcd::File* gcd)
 {
     for (unsigned int i = 0; i <= 6; i++)
     {
-        setStat(i, gcd->stat(i));
-        setStatBonus(i, gcd->statBonus(i));
+        setStat(i, gcd->stat((STAT)i));
+        setStatBonus(i, gcd->statBonus((STAT)i));
     }
 
     _statsPoints = gcd->characterPoints();
@@ -64,26 +64,26 @@ void GameDudeObject::loadFromGCDFile(libfalltergeist::Gcd::File* gcd)
     _hitPointsMax = gcd->hitPoints() + gcd->hitPointsBonus();
     _hitPoints = _hitPointsMax;
 
-    if (gcd->firstTrait() >= 0) setTraitTagged(gcd->firstTrait(), 1);
-    if (gcd->secondTrait() >= 0) setTraitTagged(gcd->secondTrait(), 1);
+    if ((uint32_t)gcd->firstTrait() >= 0) setTraitTagged((uint32_t)gcd->firstTrait(), 1);
+    if ((uint32_t)gcd->secondTrait() >= 0) setTraitTagged((uint32_t)gcd->secondTrait(), 1);
 
-    if (gcd->firstTaggedSkill() >= 0)
+    if ((uint32_t)gcd->firstTaggedSkill() >= 0)
     {
-        setSkillTagged(gcd->firstTaggedSkill(), 1);
+        setSkillTagged((uint32_t)gcd->firstTaggedSkill(), 1);
         _skillsPoints--;
     }
-    if (gcd->secondTaggedSkill() >= 0)
+    if ((uint32_t)gcd->secondTaggedSkill() >= 0)
     {
-        setSkillTagged(gcd->secondTaggedSkill(), 1);
+        setSkillTagged((uint32_t)gcd->secondTaggedSkill(), 1);
         _skillsPoints--;
     }
-    if (gcd->thirdTaggedSkill() >= 0)
+    if ((uint32_t)gcd->thirdTaggedSkill() >= 0)
     {
-        setSkillTagged(gcd->thirdTaggedSkill(), 1);
+        setSkillTagged((uint32_t)gcd->thirdTaggedSkill(), 1);
         _skillsPoints--;
     }
 
-    setGender(gcd->gender());
+    setGender((uint32_t)gcd->gender());
     setActionPoints(actionPointsMax());
 }
 

@@ -43,7 +43,7 @@ AnimatedImage::AnimatedImage(libfalltergeist::Frm::File* frm, unsigned int direc
     AnimatedPalette*  palette=Game::getInstance()->animatedPalette();
     auto masks = frm->animatedMasks();
 
-    if ((*masks)[libfalltergeist::Frm::File::MASK_MONITOR] != NULL)
+    if ((*masks)[MASK::MONITOR] != NULL)
     {
         unsigned int* mask = new unsigned int[frm->width() * frm->height()]();
         for (auto i=0; i<5; i++)
@@ -51,7 +51,7 @@ AnimatedImage::AnimatedImage(libfalltergeist::Frm::File* frm, unsigned int direc
             //modify
             for (unsigned int j = 0; j< frm->width() * frm->height(); j++)
             {
-                mask[j] = palette->color((*masks)[libfalltergeist::Frm::File::MASK_MONITOR][j],i);
+                mask[j] = palette->color((*masks)[MASK::MONITOR][j],i);
             }
             //set
             auto texture = new Texture(frm->width(), frm->height());
@@ -61,7 +61,7 @@ AnimatedImage::AnimatedImage(libfalltergeist::Frm::File* frm, unsigned int direc
         delete[] mask;
     }
 
-    if ((*masks)[libfalltergeist::Frm::File::MASK_SLIME] != NULL)
+    if ((*masks)[MASK::SLIME] != NULL)
     {
         unsigned int* mask = new unsigned int[frm->width() * frm->height()]();
 
@@ -70,7 +70,7 @@ AnimatedImage::AnimatedImage(libfalltergeist::Frm::File* frm, unsigned int direc
             //modify
             for (unsigned int j = 0; j< frm->width() * frm->height(); j++)
             {
-                mask[j] = palette->color(((*masks)[libfalltergeist::Frm::File::MASK_SLIME][j]),i);
+                mask[j] = palette->color(((*masks)[MASK::SLIME][j]),i);
             }
             //set
             auto texture = new Texture(frm->width(), frm->height());
@@ -80,7 +80,7 @@ AnimatedImage::AnimatedImage(libfalltergeist::Frm::File* frm, unsigned int direc
         delete[] mask;
     }
 
-    if ((*masks)[libfalltergeist::Frm::File::MASK_SHORE] != NULL)
+    if ((*masks)[MASK::SHORE] != NULL)
     {
         unsigned int* mask = new unsigned int[frm->width() * frm->height()]();
 
@@ -89,7 +89,7 @@ AnimatedImage::AnimatedImage(libfalltergeist::Frm::File* frm, unsigned int direc
             //modify
             for (unsigned int j = 0; j< frm->width() * frm->height(); j++)
             {
-                mask[j] = palette->color(((*masks)[libfalltergeist::Frm::File::MASK_SHORE][j]),i);
+                mask[j] = palette->color(((*masks)[MASK::SHORE][j]),i);
             }
             //set
             auto texture = new Texture(frm->width(), frm->height());
@@ -100,7 +100,7 @@ AnimatedImage::AnimatedImage(libfalltergeist::Frm::File* frm, unsigned int direc
     }
 
 
-    if ((*masks)[libfalltergeist::Frm::File::MASK_FIRE_SLOW] != NULL)
+    if ((*masks)[MASK::FIRE_SLOW] != NULL)
     {
         unsigned int* mask = new unsigned int[frm->width() * frm->height()]();
 
@@ -109,7 +109,7 @@ AnimatedImage::AnimatedImage(libfalltergeist::Frm::File* frm, unsigned int direc
             //modify
             for (unsigned int j = 0; j< frm->width() * frm->height(); j++)
             {
-                mask[j] = palette->color(((*masks)[libfalltergeist::Frm::File::MASK_FIRE_SLOW][j]),i);
+                mask[j] = palette->color(((*masks)[MASK::FIRE_SLOW][j]),i);
             }
             //set
             auto texture = new Texture(frm->width(), frm->height());
@@ -120,7 +120,7 @@ AnimatedImage::AnimatedImage(libfalltergeist::Frm::File* frm, unsigned int direc
     }
 
 
-    if ((*masks)[libfalltergeist::Frm::File::MASK_FIRE_FAST] != NULL)
+    if ((*masks)[MASK::FIRE_FAST] != NULL)
     {
         unsigned int* mask = new unsigned int[frm->width() * frm->height()]();
 
@@ -129,7 +129,7 @@ AnimatedImage::AnimatedImage(libfalltergeist::Frm::File* frm, unsigned int direc
             //modify
             for (unsigned int j = 0; j< frm->width() * frm->height(); j++)
             {
-                mask[j] = palette->color(((*masks)[libfalltergeist::Frm::File::MASK_FIRE_FAST][j]),i);
+                mask[j] = palette->color(((*masks)[MASK::FIRE_FAST][j]),i);
             }
             //set
             auto texture = new Texture(frm->width(), frm->height());
@@ -140,7 +140,7 @@ AnimatedImage::AnimatedImage(libfalltergeist::Frm::File* frm, unsigned int direc
     }
 
 
-    if ((*masks)[libfalltergeist::Frm::File::MASK_REDDOT] != NULL)
+    if ((*masks)[MASK::REDDOT] != NULL)
     {
         unsigned int* mask = new unsigned int[frm->width() * frm->height()]();
 
@@ -149,7 +149,7 @@ AnimatedImage::AnimatedImage(libfalltergeist::Frm::File* frm, unsigned int direc
             //modify
             for (unsigned int j = 0; j< frm->width() * frm->height(); j++)
             {
-                mask[j] = palette->color(((*masks)[libfalltergeist::Frm::File::MASK_REDDOT][j]),i);
+                mask[j] = palette->color(((*masks)[MASK::REDDOT][j]),i);
             }
             //set
             auto texture = new Texture(frm->width(), frm->height());
@@ -179,23 +179,23 @@ void AnimatedImage::render()
     Game::getInstance()->renderer()->drawTexture(texture(), x(), y());
     AnimatedPalette* pal = Game::getInstance()->animatedPalette();
 
-    if (pal->getCounter(libfalltergeist::Frm::File::MASK_FIRE_FAST) < _fireFastTextures.size())
-        Game::getInstance()->renderer()->drawTexture(_fireFastTextures.at(pal->getCounter(libfalltergeist::Frm::File::MASK_FIRE_FAST)), x(), y());
+    if (pal->getCounter((unsigned char)MASK::FIRE_FAST) < _fireFastTextures.size())
+        Game::getInstance()->renderer()->drawTexture(_fireFastTextures.at(pal->getCounter((unsigned char)MASK::FIRE_FAST)), x(), y());
 
-    if (pal->getCounter(libfalltergeist::Frm::File::MASK_FIRE_SLOW) < _fireSlowTextures.size())
-        Game::getInstance()->renderer()->drawTexture(_fireSlowTextures.at(pal->getCounter(libfalltergeist::Frm::File::MASK_FIRE_SLOW)), x(), y());
+    if (pal->getCounter((unsigned char)MASK::FIRE_SLOW) < _fireSlowTextures.size())
+        Game::getInstance()->renderer()->drawTexture(_fireSlowTextures.at(pal->getCounter((unsigned char)MASK::FIRE_SLOW)), x(), y());
 
-    if (pal->getCounter(libfalltergeist::Frm::File::MASK_SLIME) < _slimeTextures.size())
-        Game::getInstance()->renderer()->drawTexture(_slimeTextures.at(pal->getCounter(libfalltergeist::Frm::File::MASK_SLIME)), x(), y());
+    if (pal->getCounter((unsigned char)MASK::SLIME) < _slimeTextures.size())
+        Game::getInstance()->renderer()->drawTexture(_slimeTextures.at(pal->getCounter((unsigned char)MASK::SLIME)), x(), y());
 
-    if (pal->getCounter(libfalltergeist::Frm::File::MASK_SHORE) < _shoreTextures.size())
-        Game::getInstance()->renderer()->drawTexture(_shoreTextures.at(pal->getCounter(libfalltergeist::Frm::File::MASK_SHORE)), x(), y());
+    if (pal->getCounter((unsigned char)MASK::SHORE) < _shoreTextures.size())
+        Game::getInstance()->renderer()->drawTexture(_shoreTextures.at(pal->getCounter((unsigned char)MASK::SHORE)), x(), y());
 
-    if (pal->getCounter(libfalltergeist::Frm::File::MASK_MONITOR) < _monitorTextures.size())
-        Game::getInstance()->renderer()->drawTexture(_monitorTextures.at(pal->getCounter(libfalltergeist::Frm::File::MASK_MONITOR)), x(), y());
+    if (pal->getCounter((unsigned char)MASK::MONITOR) < _monitorTextures.size())
+        Game::getInstance()->renderer()->drawTexture(_monitorTextures.at(pal->getCounter((unsigned char)MASK::MONITOR)), x(), y());
 
-    if (pal->getCounter(libfalltergeist::Frm::File::MASK_REDDOT) < _reddotTextures.size())
-        Game::getInstance()->renderer()->drawTexture(_reddotTextures.at(pal->getCounter(libfalltergeist::Frm::File::MASK_REDDOT)), x(), y());
+    if (pal->getCounter((unsigned char)MASK::REDDOT) < _reddotTextures.size())
+        Game::getInstance()->renderer()->drawTexture(_reddotTextures.at(pal->getCounter((unsigned char)MASK::REDDOT)), x(), y());
 }
 
 }

@@ -58,16 +58,16 @@ GameObject* GameObjectFactory::createObject(unsigned int PID)
     GameObject* object = 0;
     switch (proto->typeId())
     {
-        case libfalltergeist::Pro::TYPE_ITEM:
+        case (char)OBJECT_TYPE::ITEM:
         {
             switch(proto->subtypeId())
             {
-                case libfalltergeist::Pro::TYPE_ITEM_AMMO:
+                case (char)ITEM_TYPE::AMMO:
                 {
                     object = new GameAmmoItemObject();
                     break;
                 }
-                case libfalltergeist::Pro::TYPE_ITEM_ARMOR:
+                case (char)ITEM_TYPE::ARMOR:
                 {
                     object = new GameArmorItemObject();
                     for (unsigned int i = 0; i != 9; ++i)
@@ -81,27 +81,27 @@ GameObject* GameObjectFactory::createObject(unsigned int PID)
                     ((GameArmorItemObject*)object)->setArmorClass(proto->armorClass());
                     break;
                 }
-                case libfalltergeist::Pro::TYPE_ITEM_CONTAINER:
+                case (char)ITEM_TYPE::CONTAINER:
                 {
                     object = new GameContainerItemObject();
                     break;
                 }
-                case libfalltergeist::Pro::TYPE_ITEM_DRUG:
+                case (char)ITEM_TYPE::DRUG:
                 {
                     object = new GameDrugItemObject();
                     break;
                 }
-                case libfalltergeist::Pro::TYPE_ITEM_KEY:
+                case (char)ITEM_TYPE::KEY:
                 {
                     object = new GameKeyItemObject();
                     break;
                 }
-                case libfalltergeist::Pro::TYPE_ITEM_MISC:
+                case (char)ITEM_TYPE::MISC:
                 {
                     object = new GameMiscItemObject();
                     break;
                 }
-                case libfalltergeist::Pro::TYPE_ITEM_WEAPON:
+                case (char)ITEM_TYPE::WEAPON:
                 {
                     object = new GameWeaponItemObject();
 
@@ -134,7 +134,7 @@ GameObject* GameObjectFactory::createObject(unsigned int PID)
             catch (libfalltergeist::Exception) {}
             break;
         }
-        case libfalltergeist::Pro::TYPE_CRITTER:
+        case (char)OBJECT_TYPE::CRITTER:
         {
             object = new GameCritterObject();
             auto msg = ResourceManager::msgFileType("text/english/game/pro_crit.msg");
@@ -170,32 +170,32 @@ GameObject* GameObjectFactory::createObject(unsigned int PID)
             }
             break;
         }
-        case libfalltergeist::Pro::TYPE_SCENERY:
+        case (char)OBJECT_TYPE::SCENERY:
         {
             switch (proto->subtypeId())
             {
-                case libfalltergeist::Pro::TYPE_SCENERY_DOOR:
+                case (char)SCENERY_TYPE::DOOR:
                 {
                     object = new GameDoorSceneryObject();
                     break;
                 }
-                case libfalltergeist::Pro::TYPE_SCENERY_ELEVATOR:
+                case (char)SCENERY_TYPE::ELEVATOR:
                 {
                     object = new GameElevatorSceneryObject();
                     break;
                 }
-                case libfalltergeist::Pro::TYPE_SCENERY_GENERIC:
+                case (char)SCENERY_TYPE::GENERIC:
                 {
                     object = new GameGenericSceneryObject();
                     break;
                 }
-                case libfalltergeist::Pro::TYPE_SCENERY_LADDER_TOP:
-                case libfalltergeist::Pro::TYPE_SCENERY_LADDER_BOTTOM:
+                case (char)SCENERY_TYPE::LADDER_TOP:
+                case (char)SCENERY_TYPE::LADDER_BOTTOM:
                 {
                     object = new GameLadderSceneryObject();
                     break;
                 }
-                case libfalltergeist::Pro::TYPE_SCENERY_STAIRS:
+                case (char)SCENERY_TYPE::STAIRS:
                 {
                     object = new GameStairsSceneryObject();
                     break;
@@ -236,7 +236,7 @@ GameObject* GameObjectFactory::createObject(unsigned int PID)
             }
             break;
         }
-        case libfalltergeist::Pro::TYPE_WALL:
+        case (char)OBJECT_TYPE::WALL:
         {
             object = new GameWallObject();
             auto msg = ResourceManager::msgFileType("text/english/game/pro_wall.msg");
@@ -272,11 +272,11 @@ GameObject* GameObjectFactory::createObject(unsigned int PID)
             }
             break;
         }
-        case libfalltergeist::Pro::TYPE_TILE:
+        case (char)OBJECT_TYPE::TILE:
         {
             throw Exception("GameObjectFactory - unexpected tile object");
         }
-        case libfalltergeist::Pro::TYPE_MISC:
+        case (char)OBJECT_TYPE::MISC:
         {
             switch(PID& 0x00FFFFFF)
             {
